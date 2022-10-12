@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.allsociety.mobilkiwsb.viewmodel.CartViewModel" />
+    </data>
+
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+        <LinearLayout
+            android:id="@+id/btnLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+            <Button
+                android:id="@+id/testbutton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Wstecz"
+                android:onClick="@{()->viewModel.backButtonClicked()}"/>
+
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_done_24"
+                android:text="Zakończ"
+                android:onClick="@{()->viewModel.doneButtonClicked()}"/>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/LstPeriodOptions"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@id/btnLL"
+            android:adapter="@{viewModel.listViewAdapter}" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btnLL"
+            android:layout_alignRight="@id/btnLL"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_baseline_qr_code_scanner_24"
+            android:onClick="@{()->viewModel.scanButtonClicked()}"/>
+
+    </RelativeLayout>
+
+
+</layout>
